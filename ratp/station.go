@@ -27,18 +27,16 @@ type StopRecord struct {
 	ID          string          `json:"stop_id"`
 }
 
-type dataSetRecord struct {
-	Record StopRecord `json:"fields"`
-}
-
 type dataSet struct {
 	Nhits   int
-	Records []dataSetRecord
+	Records []struct {
+		Fields StopRecord
+	}
 }
 
 func (d dataSet) getStopRecords() (records []StopRecord) {
 	for _, r := range d.Records {
-		records = append(records, r.Record)
+		records = append(records, r.Fields)
 	}
 	return
 }

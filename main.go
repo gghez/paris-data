@@ -38,5 +38,8 @@ import (
 )
 
 func main() {
-	fmt.Printf("Grabbed %d records.\n", len(ratp.GetMetroStops()))
+	records := ratp.GetMetroStops()
+	fmt.Printf("Grabbed %d records.\n", len(records))
+
+	fmt.Printf("Record 0 is %+v\n.", records[0])
 }
